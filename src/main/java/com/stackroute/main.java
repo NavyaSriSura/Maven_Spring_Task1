@@ -7,18 +7,26 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
+import java.sql.SQLOutput;
+
 public class main {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-        Movie movie = context.getBean("movie", Movie.class);
-        System.out.println(movie.getActor());
-
         XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
-        Movie movie1 = xmlBeanFactory.getBean("movie", Movie.class);
-        System.out.println("using XMLBean Factory  " + movie1.getActor());
+        Movie movieFirst = (Movie) xmlBeanFactory.getBean("movie1");
+        Movie moviesecond = (Movie) xmlBeanFactory.getBean("movie2");
 
-        BeanFactory factory = new ClassPathXmlApplicationContext("beans.xml");
-        Movie movie2 = factory.getBean("movie", Movie.class);
-        System.out.println("using Bean factory " + movie2.getActor());
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+        Movie movie = (Movie) applicationContext.getBean("movie3");
+        Movie movie3 = (Movie) applicationContext.getBean("movie3");
+
+        Movie movie2 = (Movie) applicationContext.getBean("movie2");
+        System.out.println(movieFirst.getActor());
+
+        System.out.println(movie.getActor());
+        System.out.println("Beans with Scope Prototype: Are they same?");
+        System.out.println(movie == movie3);
+        System.out.println("Beans with Scope Singleton: Are they same?");
+        System.out.println(movieFirst == moviesecond);
+
     }
 }
