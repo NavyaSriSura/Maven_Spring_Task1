@@ -18,12 +18,12 @@
           <constructor-arg name="age" index="2" value="18"/>
       </bean>-->
 
-    <bean id="movie1" autowire="byName" class="com.stackroute.domain.Movie">
+    <bean id="movie1" autowire="constructor" class="com.stackroute.domain.Movie">
 
     </bean>
 
 
-    <bean id="movie2" autowire="byType" class="com.stackroute.domain.Movie">
+    <bean id="movie2" autowire="constructor" class="com.stackroute.domain.Movie">
 
     </bean>
 
