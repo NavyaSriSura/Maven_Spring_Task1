@@ -7,14 +7,13 @@
 
     <!-- bean definitions here -->
 
-    <bean id="actor" class="com.stackroute.domain.Actor">
-        <constructor-arg name="name" index="0" value="Navya"/>
-        <constructor-arg name="gender" index="1" value="female"/>
-        <constructor-arg name="age" index="2" value="20"/>
+    <bean id="actor_id" class="com.stackroute.domain.Actor">
+        <property name="gender" value="female"/>
+        <property name="name" value="female"/>
+        <property name="age" value="21"/>
     </bean>
 
-
-    <bean id="movie1" autowire="constructor" class="com.stackroute.domain.Movie"/>
-
-    <bean name="BeanLifeCycleDemoBean" class="com.stackroute.Demo.BeanLifeCycleDemoBean"/>
+    <bean id="movie" class="com.stackroute.domain.Movie">
+        <property name="actor" ref="actor_id"/>
+    </bean>
 </beans>
